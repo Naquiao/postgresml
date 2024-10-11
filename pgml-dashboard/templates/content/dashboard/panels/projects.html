@@ -1,0 +1,22 @@
+<% use crate::utils::urls; %>
+<turbo-frame id="projects">
+  <div class="notebook">
+    <section>
+      <h1><span class="material-symbols-outlined">apps</span>Projects</h1> 
+      <ol class="object_list project_list">
+        <% for project in projects { %>
+        <li>
+          <a href="<%- urls::deployment_project_by_id(project.id) %>" data-turbo-frame="_top">
+            <span><%= project.name %></span>
+            <span>
+              <time datetime="<% project.created_at; %>">
+                <% project.created_at; %> 
+              </time>
+            </span>
+          </a>
+        </li>
+        <% } %>
+      </ol>
+    </section>
+  </div>
+</turbo-frame>

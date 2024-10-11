@@ -1,0 +1,102 @@
+<% use crate::templates::components::{ConfirmModal, Modal};
+use crate::utils::urls;
+
+let modal = Modal::new(
+  ConfirmModal::new(
+    "Are you sure you want to delete this cell?"
+  ).confirm_action("notebook#deleteCell").into()
+);
+
+%>
+<turbo-frame id="notebook">
+  <div data-controller="notebook" data-notebook-modal-outlet="#<%=modal.id %>" data-notebook-url-root-value="<%- urls::deployment_notebooks() %>">
+    
+    <div class="card mb-4 z-1" data-notebook-target="menu">
+      <div class="card-body p-1">
+        <div class="row">
+          <div class="col-12 col-xxl-6">
+            <div class="d-flex justify-content-start align-items-center h-100">
+              <button class="btn btn-tertiary d-flex gap-1" data-action="notebook#playAll" data-notebook-target="playAllButton">
+                <span class="material-symbols-outlined fs-5">
+                  play_arrow
+                </span>
+                Run All
+              </button>
+              <form action="<%- urls::deployment_notebooks() %>/<%= notebook.id %>/reset" method="post">
+                <button class="btn btn-tertiary d-flex gap-1">
+                  <span class="material-symbols-outlined fs-5">
+                    replay
+                  </span>
+                  Clear All Output
+                </button>
+              </form>
+              <button class="btn btn-tertiary d-flex gap-1" data-action="notebook#newCell">
+                <span class="material-symbols-outlined fs-5">
+                  add
+                </span>
+                Create New Cell
+              </button>
+            </div>
+          </div>
+
+          <div class="col-12 col-xxl-6">
+            <div class="d-flex justify-content-end align-items-center h-100">
+              <button class="btn btn-tertiary d-flex gap-1" data-notebook-target="cellButton" disabled data-action="notebook#playCell">
+                <span class="material-symbols-outlined fs-5">
+                  play_arrow
+                </span>
+                <span data-notebook-target="playButtonText">Run</span>
+              </button>
+              <button class="btn btn-tertiary d-flex gap-1" data-notebook-target="stopButton" disabled data-action="notebook#playStop">
+                <span class="material-symbols-outlined fs-5">
+                  stop
+                </span>
+                Stop
+              </button>
+              <button class="btn btn-tertiary d-flex gap-1" data-notebook-target="cellButton" disabled data-action="notebook#deleteCellConfirm">
+                <span class="material-symbols-outlined fs-5">
+                  delete
+                </span>
+                Delete
+              </button>
+              <div class="dropdown nav-item d-flex justify-content-center align-items-center">
+                <button data-notebook-target="cellButton" class="horizontal-hide btn btn-dropdown dropdown-toggle leftnav-collapse-affect bg-transparent border-0" disabled href="#" role="button" data-bs-toggle="dropdown" data-bs-offset="0, 10" aria-expanded="false">
+                  <span data-notebook-target="syntaxName">Markdown</span>
+                  <span class="material-symbols-outlined">
+                    expand_more
+                  </span>
+                </button>
+                <ul class="dropdown-menu w-100">
+                  <li class="menu-item d-flex align-items-center">
+                    <a href="#" data-action="notebook#changeSyntax" data-syntax="gfm">Markdown</a>
+                  </li>
+                  <li class="menu-item d-flex align-items-center">
+                    <a href="#" data-action="notebook#changeSyntax" data-syntax="sql">SQL</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cells -->
+    <div class="overflow-y-scroll pe-2" data-notebook-target="scroller" data-notebook-id="<%= notebook.id %>">
+  
+      <% for cell in cells {
+        let edit = false;
+        let selected = false;
+    
+        include!("cell.html");
+      } %>
+    </div>
+
+     <%+ modal %>
+
+    <form action="<%- urls::deployment_notebooks() %>/<%= notebook.id %>/cell" method="post" data-notebook-target="newCell">
+      <input type="hidden" name="cell_type" value="3"> <!-- SQL -->
+      <input type="hidden" name="contents" value="">
+    </form>
+  </div>
+</turbo-frame>

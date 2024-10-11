@@ -1,0 +1,31 @@
+<%
+  use crate::components::Pagination;
+  let items_len = items.len();
+  use rand::Rng;
+  let mut rng = rand::thread_rng();
+  let identifier = rng.gen::<u16>();
+%>
+
+<div data-controller="carousel" data-carousel-identifier-value="<%- identifier %>">
+  <% for item in &items {%>
+  <template data-carousel-target="template">
+    <div class="item-1 w-100 d-inline-block carousel-item">
+      <div class="m-auto" style="width: fit-content" data-action="mouseenter->carousel#Pause mouseleave->carousel#Resume">
+        <%- item %>
+      </div>
+    </div>
+  </template>
+  <% } %>
+
+  <div class="carousel w-100 overflow-hidden" style="height: fit-content; white-space: nowrap" data-carousel-target="carousel">
+    <div class="item-1 w-100 d-inline-block carousel-item">
+      <div class="m-auto" style="width: fit-content" data-action="mouseenter->carousel#Pause mouseleave->carousel#Resume">
+        <% if items_len > 0 { %>
+          <%- items[0] %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <%+ Pagination::new(items_len, identifier).timed() %>
+</div>

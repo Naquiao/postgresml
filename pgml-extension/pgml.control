@@ -1,0 +1,7 @@
+comment = 'Machine Learning and AI functions from postgresml.org'
+default_version = '@CARGO_VERSION@'
+module_pathname = '$libdir/pgml'
+relocatable = false
+superuser = true
+schema = 'pgml'
+trusted = true

@@ -1,0 +1,20 @@
+<% use crate::utils::config::standalone_dashboard; %>
+
+<article class="docs col-12 col-xxl-10 overflow-x-auto py-4 px-xl-5">
+  <%- content %>
+
+  <div class="mt-5">
+    <h2 class="h2 mb-3">Have Questions?</h2>
+    <p><a href="https://discord.gg/DmyJP3qJ7U">Join our Discord</a> and ask us anything! We're friendly and would love to talk about PostgresML and PgCat.</p>
+  </div>
+
+  <% if !standalone_dashboard() { %>
+  <div class="mt-5 pb-3">
+    <h2 class="h2 mb-3">Try It Out</h2>
+    <p>Get <strong>$100 free</strong> when you sign up for our Serverless Cloud. That's over 10 hours of run time, GPUs, and plenty of datasets to get you started.</p>
+    <div class="d-flex justify-content-center gap-2 pt-3 pb-4">
+      <a class="btn btn-primary" href="<%- crate::utils::config::signup_url() %>">Get Started</a>
+    </div>
+  </div>
+  <% } %>
+</article>

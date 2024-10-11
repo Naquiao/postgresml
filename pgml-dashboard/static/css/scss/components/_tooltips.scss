@@ -1,0 +1,10 @@
+.tooltip {
+    --bs-tooltip-bg: #{$gray-800};
+    --bs-tooltip-color:#{$white};
+    --bs-tooltip-arrow-width: 29px;
+    --bs-tooltip-arrow-height: 14px;
+    --bs-tooltip-margin: 0 0 1rem 0;
+    --bs-tooltip-padding-y: 10px;
+    --bs-tooltip-padding-x: 10px;
+    --bs-tooltip-opacity: 1.0;
+}

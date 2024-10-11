@@ -1,0 +1,96 @@
+
+.animate-rotate {
+    animation: rotation 60s infinite linear;
+}
+
+.animate-scale {
+    animation: scaling 30s infinite linear;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes scaling {
+  0% {
+    transform: scale(1.0, 1.0);
+  }
+  100% {
+    transform: scale(0.5, 0.5);
+  }
+}
+
+.horizontal-hide {
+  transition-property: width, margin, padding, flex;
+  transition-duration: $animation-timer;
+  display: flex; 
+  justify-content: space-between;
+  overflow: hidden;
+  flex: 1;
+
+  &.collapsed, &.collapsing {
+      height: auto !important;
+      width: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      flex: 0;
+      border-left: 0px;
+      border-right: 0px;
+      &* {
+          border-left: 0px;
+          border-right: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+      }
+  }
+}
+
+@mixin loading-dot($delay, $initial) {
+  width: 30px;
+  height: 30px;
+  opacity: $initial;
+  border-radius: 30px;
+  background-color: #{$gray-100};
+  animation: opacity 3s infinite linear;
+  animation-delay: $delay;
+}
+
+.loading-dot-1 {
+  @include loading-dot(0s, 0.1);
+}
+.loading-dot-2 {
+  @include loading-dot(0.5s, 0.2);
+}
+.loading-dot-3 {
+  @include loading-dot(1s, 0.3);
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0.1;
+  }
+  75% {
+    opacity: 1; 
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+
+.goto-arrow-hover-trigger:hover {
+  .goto-arrow-shift-animation {
+    left: 0.5rem;
+  }
+}
+
+.goto-arrow-shift-animation {
+  left: 0px;
+  position: relative;
+  transition: left 0.3s;
+}

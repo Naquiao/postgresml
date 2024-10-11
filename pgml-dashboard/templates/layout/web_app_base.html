@@ -1,0 +1,45 @@
+<% 
+    use crate::templates::components::Breadcrumbs;
+    use crate::components::navigation::navbar::web_app::WebApp as WebAppNavbar;
+    use crate::components::navigation::left_nav::web_app::WebApp as WebAppLeftNav;
+%>
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <%+ head %>
+    <body data-bs-theme="dark" data-theme="product">
+        <% for component in body_components { %>
+        <%+ component %>
+        <% } %>
+        <main>
+            <div class="container-fluid p-0 min-vh-lg-100">
+                <div class="row gx-0 min-vh-lg-100 gy-0">
+                    <%+ WebAppNavbar::new(product_left_nav.links.clone(), dropdown_nav).cluster(cluster) %>
+                    <div class="d-flex">
+                        <%+ WebAppLeftNav::new(product_left_nav.clone())
+                            .id(&product_left_nav.unique_id()) %>
+    
+                        <div class="clear-from-under-navbar flex-grow-1 min-vw-0 web-app-content-area">
+                            <div class="px-4 px-sm-5 py-3 d-none d-lg-flex" style="position: absolute">
+                                <%- Breadcrumbs::render(breadcrumbs) %>
+                            </div>
+
+                            <div class="px-xs-2 px-md-5 overflow-hidden" style="padding-top: 57px;">
+                                <div class="webapp-content-max-width-container pt-4">
+                                    <% for banner in product_banners_high {%>
+                                    <%+ banner %>
+                                    <% } %>
+                                    <%+ product_banner_medium %>
+                                    <%+ product_banner_marketing %>
+                                    <%- content.unwrap_or_default() %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
+    </body>
+</html>

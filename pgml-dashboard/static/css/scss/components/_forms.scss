@@ -1,0 +1,304 @@
+.form-check-input {
+    --bs-form-check-bg: transparent;
+    
+    &[type=radio] {
+        border: 2px solid var(--form-radio-border-color);
+
+        &:hover {
+            cursor: pointer;
+            border: 5px solid  var(--form-radio-hover-border-color);
+        }
+    
+        &:disabled {
+            background-color: transparent;
+            border-color: var(--form-check-disable-color);
+        }
+    }
+
+    &[type=radio]:checked {
+        background-color: var(--form-radio-checked-bg);
+        border: 5px solid var(--form-radio-border-color);
+
+        &:disabled {
+            background-color: transparent;
+            border: 5px solid var(--form-check-disable-color);
+        }
+    }
+}
+
+.form-switch>input {
+    &[type=checkbox] {
+        background-color: var(--form-switch-default);
+        border-color: var(--form-switch-default);
+        width: 2.5em !important;
+    
+        &:hover {
+            border-color: var(--form-switch-hover);
+            background-color: var(--form-switch-hover);
+        }
+    
+        &:disabled {
+            border-color: var(--form-check-disable-color);
+            background-color: var(--form-check-disable-color);
+            opacity: 1;
+
+        }
+    }
+
+    &[type=checkbox]:checked {
+        background-color: var(--form-switch-active);
+        border-color: var(--form-switch-active);
+    
+        &:hover {
+            border-color: var(--form-switch-hover);
+            background-color: var(--form-switch-hover);
+        }
+
+        &:disabled {
+            border-color: var(--form-check-disable-color);
+            background-color: var(--form-check-disable-color);
+            opacity: 1;
+        }
+    }
+}
+
+.form-switch .form-check-input {
+    --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e") !important;
+}
+
+.form-label {
+    color: #{$gray-100};
+}
+
+.form-range {
+    & {
+        font-size: 1.5rem;
+        width: 100%;
+    }
+
+    & {
+        color: #{$neon-tint-100};
+        --thumb-height: 1.125em;
+        --track-height: 4px;
+        --brightness-hover: 110%;
+        --brightness-down: 90%;
+        --clip-edges: 0.125em;
+        --track-color: #{$form-range-track-color};
+        --bg-color: transparent;
+    }
+
+    /* === range commons === */
+    & {
+        position: relative;
+        background: var(--bg-color);
+        overflow: hidden;
+    }
+
+    &:active {
+        cursor: grabbing;
+    }
+
+    &:disabled {
+        filter: grayscale(1);
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    /* === WebKit specific styles === */
+    &,
+    &::-webkit-slider-runnable-track,
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
+    }
+
+    &::-webkit-slider-runnable-track,
+    &::-webkit-slider-thumb {
+        position: relative;
+    }
+
+    &::-webkit-slider-thumb {
+        --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+        --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+        --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+        --clip-further: calc(100% + 1px);
+        --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+            100vmax currentColor;
+
+        width: var(--thumb-width, var(--thumb-height));
+        background: linear-gradient(currentColor 0 0) scroll no-repeat left center /
+            50% calc(var(--track-height) + 1px);
+        background-color: currentColor;
+        box-shadow: var(--box-fill);
+        border-radius: var(--thumb-width, var(--thumb-height));
+
+        filter: brightness(100%);
+        clip-path: polygon(
+            100% -1px,
+            var(--clip-edges) -1px,
+            0 var(--clip-top),
+            -100vmax var(--clip-top),
+            -100vmax var(--clip-bottom),
+            0 var(--clip-bottom),
+            var(--clip-edges) 100%,
+            var(--clip-further) var(--clip-further)
+        );
+    }
+
+    &:hover::-webkit-slider-thumb {
+        filter: brightness(var(--brightness-hover));
+        cursor: grab;
+    }
+
+    &:active::-webkit-slider-thumb {
+        filter: brightness(var(--brightness-down));
+        cursor: grabbing;
+    }
+
+    &::-webkit-slider-runnable-track {
+        background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center /
+            100% calc(var(--track-height) + 1px);
+    }
+
+    &:disabled::-webkit-slider-thumb {
+        cursor: not-allowed;
+    }
+
+    /* === Firefox specific styles === */
+    &,
+    &::-moz-range-track,
+    &::-moz-range-thumb {
+        appearance: none;
+        transition: all ease 100ms;
+        height: var(--thumb-height);
+    }
+
+    &::-moz-range-track,
+    &::-moz-range-thumb,
+    &::-moz-range-progress {
+        background: var(--bg-color);
+    }
+
+    &::-moz-range-thumb {
+        background: currentColor;
+        border: 0;
+        width: var(--thumb-width, var(--thumb-height));
+        border-radius: var(--thumb-width, var(--thumb-height));
+        cursor: grab;
+    }
+
+    &:active::-moz-range-thumb {
+        cursor: grabbing;
+    }
+
+    &::-moz-range-track {
+        width: 100%;
+        background: var(--track-color);
+    }
+
+    &::-moz-range-progress {
+        appearance: none;
+        background: currentColor;
+        transition-delay: 30ms;
+    }
+
+    &::-moz-range-track,
+    &::-moz-range-progress {
+        height: calc(var(--track-height) + 1px);
+        border-radius: var(--track-height);
+    }
+
+    &::-moz-range-thumb,
+    &::-moz-range-progress {
+        filter: brightness(100%);
+    }
+
+    &:hover::-moz-range-thumb,
+    &:hover::-moz-range-progress {
+        filter: brightness(var(--brightness-hover));
+    }
+
+    &:active::-moz-range-thumb,
+    &:active::-moz-range-progress {
+        filter: brightness(var(--brightness-down));
+    }
+
+    &:disabled::-moz-range-thumb {
+        cursor: not-allowed;
+    }
+}
+
+.input-group {
+    border-radius: #{$input-border-radius};
+    border: 2px solid transparent;
+    &:focus-within {
+        border: 2px solid #{$input-focus-border-color};
+    }
+
+    transition: $input-transition;
+    background-color: #{$input-bg};
+    padding: 16px 14px;
+
+    .form-control[type=text] {
+        border: none;
+        padding: 0px 6px;
+    }
+    .input-group-text {
+        border: none;
+        padding: 0px 6px;
+    }
+}
+
+.form-control.borderless {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    caret-color: #{$input-color};
+}
+
+.form-control {
+    &.is-invalid {
+        &:focus {
+            box-shadow: none;
+            border-width: 2px;
+        }
+
+        padding-right: #{$input-padding-x};
+    }
+}
+
+.invalid-feedback {
+    --bs-danger-text: #{$error};
+}
+
+.form-control:invalid.form-control:not(:placeholder-shown) {
+    border-color: #{$error};
+}
+
+.hourly-rate {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    background-color: #{$gray-900};
+    border-radius: $border-radius;
+    padding: 16px 20px;
+
+    color: #{$gray-400};
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.18px;
+}
+
+// fix autofill color for chrome
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: white;
+    transition: background-color 5000s ease-in-out 0s;
+}

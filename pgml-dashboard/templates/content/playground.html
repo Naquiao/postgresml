@@ -1,0 +1,344 @@
+<% use crate::components::*; 
+use crate::components::tables::large::*;
+use crate::components::navigation::tabs::*;
+use crate::components::inputs::range_group::RangeGroup;
+use crate::components::inputs::text::editable_header::{EditableHeader, Headers};
+use crate::components::stimulus::stimulus_target::StimulusTarget;
+use crate::components::stimulus::stimulus_action::StimulusAction;
+// use crate::components::stimulus::stimulus_action::StimulusEvents;
+use crate::components::inputs::select::Select;
+use crate::components::inputs::switch::{Switch, State};
+use crate::components::cards::marketing::Slider as SliderCard;
+use crate::components::icons::Checkmark;
+use crate::components::Slider;
+use crate::components::pagination::Pagination;
+use crate::components::inputs::{range::Range, RangeGroupPricingCalc};
+use crate::components::tables::ServerlessModels;
+use crate::components::cards::Rgb;
+use crate::components::cards::Psychedelic;
+%>
+
+<div class="min-height: 100vh;" data-controller="playground">
+  <h1 class="h1">Playground</h1>
+  <p>This is a space to display components.</p>
+
+  <div style="margin-bottom: 14rem;">
+    <%+ Pagination::new(3, 1)
+    .active_index(0)
+    .not_clickable() %>
+
+    <%+ Pagination::new(3, 1)
+    .active_index(1)
+    .not_clickable() %>
+
+    <%+ Pagination::new(3, 1)
+    .active_index(2)
+    .not_clickable() %>
+  
+  </div>
+
+  <h3 class="h3">icons</h3>
+  <div class="mb-5">
+    <%+ GithubIcon::new() %>
+  </div>
+
+  <div class="row">
+    <h5>Checkmarks</h5>
+    <div class="row">
+      <h6 class="col">normal</h6>
+      <h6 class="col">in disabled container</h6>
+      <h6 class="col">disabled attribute</h6>
+    </div>
+    <div class="col">
+      <%+ Checkmark::new().color("white") %>
+      <%+ Checkmark::new().color("blue") %>
+      <%+ Checkmark::new().color("green") %>
+      <%+ Checkmark::new().color("orange") %>
+      <%+ Checkmark::new().color("purple") %>
+    </div>
+    <div class="disabled col">
+      <%+ Checkmark::new().color("white") %>
+      <%+ Checkmark::new().color("blue") %>
+      <%+ Checkmark::new().color("green") %>
+      <%+ Checkmark::new().color("orange") %>
+      <%+ Checkmark::new().color("purple") %>
+    </div>
+    <div class="col">
+      <%+ Checkmark::new().color("white").disabled() %>
+      <%+ Checkmark::new().color("blue").disabled() %>
+      <%+ Checkmark::new().color("green").disabled() %>
+      <%+ Checkmark::new().color("orange").disabled() %>
+      <%+ Checkmark::new().color("purple").disabled() %>
+    </div>
+    <h5>Twitter</h5>
+    <%+ Checkmark::new().twitter() %>
+  </div>
+  <div class="mb-3">
+    <%+ ProfileIcon %>
+  </div>
+
+  <h3 class="h3">Dropdowns</h3>
+  <div class="mb-5">
+    <div class="row">
+      <div class="col-6" style="min-height: 400px;">
+        <%+ Dropdown::nav(
+          vec![
+            StaticNavLink::new("Test1".into(), "#test1".into()),
+            StaticNavLink::new("Test2".into(), "#test2".into()),
+            StaticNavLink::new("Starts Active".into(), "#test".into()).active(true)
+          ]
+        ).collapsable()
+        .icon(ProfileIcon::new().into()) %>
+      </div>
+      <div class="col-6" style="min-height: 400px;">
+        <%+ Dropdown::nav(
+          vec![
+          StaticNavLink::new("Test1".into(), "#test1".into()),
+          StaticNavLink::new("Test2".into(), "#test2".into()),
+          StaticNavLink::new("Starts Active".into(), "#test".into()).active(true)
+          ]
+        ).collapsable() %>
+      </div>
+      <div class="col-2" style="min-height: 400px;">
+        <%+ Dropdown::nav(
+          vec![
+            StaticNavLink::new("Really long title in the dropdown".into(), "#test".into()),
+            StaticNavLink::new("Normal link".into(), "#test".into()),
+          ]
+        ).collapsable()
+        .text("Really long name in the dropdown".into()) %>
+      </div>
+    </div>
+  </div>
+
+
+  <h3 class="h3">Navigation</h3>
+  <div class="mb-5">
+    <%+ Tabs::new(
+        &[
+            Tab::new(
+                "Test tab",
+                Table::new(
+                    &["Date", "Time", "Status"],
+                    &[
+                        Row::new(&[
+                            "01/01/2022".into(),
+                            "20:00:43.956373 +00:00:00 UTC".into(),
+                            "Ready".into()
+                        ])
+                        .action("click->playground#selectRow")
+                        .data("row-id", "1"),
+                        
+                        Row::new(&[
+                            "01/01/2022".into(),
+                            "20:00:43.956373 +00:00:00 UTC".into(), "Ready".into()
+                        ])
+                        .action("click->playground#selectRow")
+                        .data("row-id", "2"),
+
+                        Row::new(&[
+                            "01/01/2022".into(),
+                            "20:00:43.956373 +00:00:00 UTC".into(), "Ready".into()
+                        ])
+                        .action("click->playground#selectRow")
+                        .data("row-id", "3"),
+
+                    ])
+                    .selectable()
+                    .into()
+            ),
+            Tab::new(
+                "Second tab",
+                "Second tab content".into()
+            ),
+            Tab::new(
+                "Third active tab",
+                "Hello third tab".into(),
+            ),
+        ]
+    )
+    .active_tab("Test tab") %>
+  </div>
+
+  <h3 class="h3">Inputs</h3>
+  <div style="background: #17181A; padding: 2rem; border-radius: 16px;">
+    <div class="mb-5">
+      <div class="my-5">
+        <%+ RangeGroup::new("Input 1")
+          .initial_value(4.0)
+          .bounds(2, 38, 2.0)
+          .units("T") %>
+      </div>
+
+      <div class="my-5">
+        <%+ RangeGroup::new("Input 2: with hourly rate")
+        .initial_value(3.0)
+        .identifier("my_test input 2")
+        .bounds(1, 20, 1.0)
+        .units("GB")
+        .cost_rate(0.144) %>
+      </div>
+
+      <div class="my-5">
+        <%+ RangeGroup::new("range with ticks")
+            .initial_value(2.0)
+            .group_target(
+              StimulusTarget::new()
+                .controller("playground")
+                .name("rangeOptions")
+            )
+            .options(
+              vec!(
+                vec!(
+                  "4 CPU".to_owned(),
+                  "16 GB Memory".to_owned(),
+                  "24 GB GPU Memory".to_owned(),
+                ), 
+                vec!(
+                  "8 CPU".to_owned(),
+                  "32 GB Memory".to_owned(),
+                  "24 GB GPU Memory".to_owned(),
+                ),
+                vec!(
+                  "16 CPU".to_owned(),
+                  "64 GB Memory".to_owned(),
+                  "24 GB GPU Memory".to_owned(),
+                ),
+                vec!(
+                  "32 CPU".to_owned(),
+                  "128 GB Memory".to_owned(),
+                  "24 GB GPU Memory".to_owned(),
+                ),
+                vec!(
+                  "32 CPU".to_owned(),
+                  "128 GB Memory".to_owned(),
+                  "24 GB GPU Memory".to_owned(),
+                ),
+                vec!(
+                  "64 CPU".to_owned(),
+                  "256 GB Memory".to_owned(),
+                  "24 GB GPU Memory".to_owned(),
+                ),
+                vec!(
+                  "48 CPU".to_owned(),
+                  "192 GB Memory".to_owned(),
+                  "96 GB GPU Memory".to_owned(),
+                ),
+              )
+            )
+            .hide_title()
+            .hide_value() %>
+      </div>
+      <button data-action="playground#resetOptionsRange">Reset Options Input</button>
+      <button data-action="playground#logOptionsRange">log value</button>
+    </div>
+
+    <div class="d-flex flex-row justify-content-between">
+      <%+ EditableHeader::new()
+          .value("Size H1")
+          .header_type(Headers::H1) %>
+      <div>
+        this is a thing that takes up space
+      </div>
+    </div>
+    <div class="d-flex flex-row justify-content-between">
+      <%+ EditableHeader::new()
+          .value("Size H2")
+          .header_type(Headers::H2)
+          .id("header-2") %>
+      <div>
+        <button data-action="playground#addErrorH2">Add an Error</button>
+        <button data-action="playground#clearErrorH2">Clear Error</button>
+      </div>
+    </div>
+    <div class="d-flex flex-row justify-content-between">
+      <%+ EditableHeader::new()
+          .value("Size H3")
+          .header_type(Headers::H3)
+          .input_name("title")
+          .input_target(
+            StimulusTarget::new()
+              .controller("some-existing-controller")
+              .name("desired-target-name")
+          ).id("header-3") %>
+      <div>
+        <button data-action="playground#addError">Add an Error</button>
+        <button data-action="playground#clearError">Clear Error</button>
+      </div>
+    </div>
+    <div class="d-flex flex-row justify-content-between">
+      <div style="width: 30%">
+        <%+ Switch::new()
+            .on_toggle(
+              StimulusAction::new()
+              .controller("playground")
+              .method("testOnToggleSwitch"))
+            .target(StimulusTarget::new()
+              .controller("playground")
+              .name("switch"))
+            .left("CPU", "memory")
+            .right("GPU", "mode_fan")
+            .default_position(State::Right) %>
+          </div>
+          <div>
+            <button data-action="click->playground#resetSwitch">Reset Switch</button>
+          </div>
+    </div>
+  </div>
+
+  <%+ Range::new() %>
+
+  <%+ RangeGroupPricingCalc::new() %>
+
+</div>
+
+<div style="margin-bottom: 14rem;">
+  <%+ Select::new()
+      .options(vec!["option_pg1".to_owned(), "option2".to_owned(), "option3".to_owned()])
+      .name("selectName") %>
+</div>
+
+<div style="margin-bottom: 14rem;">
+  <%+ Slider::new().cards(
+      Vec::from([
+      SliderCard::new()
+        .title("New card")
+        .image("/dashboard/static/images/illustrations/gravity.png")
+        .bullets(vec!["bullet1".to_owned(), "bullet2".to_owned(), "bullet3".to_owned()]).into(),
+
+        SliderCard::new()
+        .title("New card")
+        .image("/dashboard/static/images/illustrations/gravity.png")
+        .bullets(vec!["bullet1".to_owned(), "bullet2".to_owned(), "bullet3".to_owned()]).into(),
+
+        SliderCard::new()
+        .title("New card")
+        .image("/dashboard/static/images/illustrations/gravity.png")
+        .bullets(vec!["bullet1 ldfjkh alkjhdf ladfkh skdfh ksh dfkhsdfk h".to_owned().into()
+        ]).into()
+      ])
+  )%>
+</div>
+
+<div style="margin-bottom: 14rem;">
+  <%+ ServerlessModels::new() %>
+</div>
+
+<div style="margin-bottom: 14rem;">
+  <h5>RGB card</h5>
+  <%+ Rgb::new("hi".into()).active() %>
+</div>
+
+<div style="margin-bottom: 14rem;">
+  <h5>Psychedelic card</h5>
+  <%+ Psychedelic::new() %>
+  <%+ Psychedelic::new().is_border_only(true) %>
+  <%+ Psychedelic::new().set_color_pink() %>
+  <%+ Psychedelic::new().set_color_pink().is_border_only(true) %>
+</div>
+
+<div style="margin-bottom: 14rem;">
+  <turbo-frame id="code-editor-embed" src="/code_editor/embed?id=code-editor-embed">
+    Loading our current pricing model...
+  </turbo-frame>
+</div>

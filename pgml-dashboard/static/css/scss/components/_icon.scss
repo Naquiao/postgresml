@@ -1,0 +1,183 @@
+.icon {
+    border-radius: #{$border-radius};
+    width: 44px; 
+    height: 44px;
+    padding: 8px;
+
+    &-red {
+        @extend .icon;
+        background: $gradient-red;
+    }
+
+    &-pink {
+        @extend .icon;
+        background: $gradient-pink; 
+        box-shadow: 8px 8px 24px rgba(255, 69, 103, 0.32);
+    }
+
+    &-green {
+        @extend .icon;
+        background: $gradient-green;
+        box-shadow: 8px 8px 24px rgba(7, 192, 108, 0.32);
+    }
+
+    &-gray {
+        @extend .icon;
+        background: $gradient-gray;
+        box-shadow: 8px 8px 24px rgba(120, 120, 120, 0.32);
+    }
+
+    &-purple {
+        @extend .icon;
+        background: $gradient-purple;
+        box-shadow: 8px 8px 24px rgba(163, 116, 253, 0.32);
+    }
+    &-orange {
+        @extend .icon;
+        background: $gradient-orange;
+        box-shadow: 8px 8px 24px rgba(250, 179, 73, 0.32);
+    }
+    &-blue {
+        @extend .icon;
+        background: $gradient-blue;
+        box-shadow: 8px 8px 24px rgba(66, 152, 252, 0.32);
+    }
+    &-party {
+        @extend .icon;
+        background: $primary-gradient-main;
+        box-shadow: 8px 8px 24px rgba(128, 67, 254, 0.32);
+    }
+}
+
+.icon-lg {
+    width: 56px; 
+    height: 56px;
+    padding: 12px; 
+
+    &-pink {
+        @extend .icon-pink;
+        @extend .icon-lg;
+    }
+
+    &-green {
+        @extend .icon-green;
+        @extend .icon-lg;
+    }
+
+    &-orange {
+        @extend .icon-orange;
+        @extend .icon-lg;
+    }
+    &-party {
+        @extend .icon-party;
+        @extend .icon-lg;
+    }
+}
+
+.icon-xl {
+    border-radius: #{$border-radius-lg};
+    width: 80px; 
+    height: 80px;
+    padding: 16px; 
+
+    &-party {
+        @extend .icon-party;
+        @extend .icon-xl;
+    }
+
+    &-purple {
+        @extend .icon-purple;
+        @extend .icon-xl;
+    }
+
+    &-orange {
+        @extend .icon-orange;
+        @extend .icon-xl;
+    }
+
+    &-green {
+        @extend .icon-green;
+        @extend .icon-xl;
+    }
+}
+
+.icon-alt-padding {
+    padding: 12px;
+}
+
+.icon-alt-shadow {
+    box-shadow: 8px 8px 24px rgba(163, 116, 253, 0.32);
+}
+
+.top-nav-controls {
+    &:hover, &.show, &[aria-expanded="true"] {
+        &>span {
+            color: #{$neon-tint-100};
+        }
+    }
+
+    path {
+        stroke: #{$gray-700};
+    }
+    &::after {
+        display: none;
+    }
+
+    svg {
+        * {
+            transform: rotate(0deg);
+            transform-origin: center;
+            transition: transform $animation-timer;
+        }
+    }
+
+    &:not(.collapsed) {
+        svg {
+            * {
+                stroke: #{$neon-tint-100};
+                transform-origin: center;
+                transform: rotate(180deg);
+                transition: transform $animation-timer;
+            }
+        }
+    }
+}
+
+.icon-back-btn {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 13px;
+}
+
+.drag-and-drop-icon {
+    top: 5px;
+    right: 0;
+}
+
+.icomoon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-owl:before {
+    content: "\e900";
+  }
+
+  .icon-pgcat:before {
+    content: "\e901";
+  }
+
+  .icon-korvus:before {
+    content: "\e902";
+  }

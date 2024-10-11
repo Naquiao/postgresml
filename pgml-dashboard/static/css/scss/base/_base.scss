@@ -1,0 +1,115 @@
+
+/**
+ * Code with a copy button.
+ *
+ * Used not only in docs but also in clusters UI.
+ * */
+ pre:hover {
+    .btn-copy {
+        opacity: 1;
+    }
+}
+  
+pre {
+    position: relative;
+    overflow-x: hidden;
+    padding: 12px;
+    border-radius: #{$border-radius};
+
+    &:hover {
+        .code-toolbar {
+            background-color: $gray-600;
+            color: #{$slate-tint-500};
+        }
+    }
+
+    code {
+        overflow-x: auto;
+        display: block;
+        border: none;
+    }
+
+    .code-toolbar {
+        display: flex;
+        gap: 4px;
+        position: absolute; 
+        top: 4px;
+        right: 4px;
+        background: transparent;
+        padding: 4px;
+        color: #{$slate-shade-700};
+    }
+}
+
+// links
+a {
+    text-decoration: none; 
+
+    &:not(.btn, .nav .nav-link, .breadcrumb-item a, .list-group-item, .a-reset, .navbar .nav-link, .navbar .navbar-brand, .menu-item a) {
+        color: var(--bs-link-color);
+    }
+}
+
+table {
+    @extend .table;
+    @extend .table-bordered;
+    @extend .table-hover;
+}
+
+html, body, main {
+    height: fit-content;
+    scrollbar-color: #{$purple} #{$gray-900};
+}
+
+article {
+    p {
+        line-height: 1.6rem;
+        print-color-adjust: exact;
+    }
+}
+
+.bg-white {
+    background-color: #{$bg-white} !important;
+}
+
+// Remove padding from large screens.
+@include media-breakpoint-up(lg) {
+    body {
+        padding: 0;
+    }
+}
+
+.min-vh-lg-100 {
+    @include media-breakpoint-up(lg) {
+        min-height: 100vh !important;
+    }
+}
+
+.list-group {
+    --bs-list-group-bg: transparent;
+    --bs-list-group-border-width: 0;
+    --bs-list-group-border-color: transparent;
+    --bs-list-group-color: #{$primary};
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+// because boostrap 5.3 flex-fill is broken. 
+.flex-1 {
+    flex: 1;
+}
+
+// Smooth scroll does not work in firefox and turbo.  New pages will not scroll to top, so we remove smooth for Firefox. 
+@-moz-document url-prefix() {
+    :root {
+        scroll-behavior: auto;
+    }
+}

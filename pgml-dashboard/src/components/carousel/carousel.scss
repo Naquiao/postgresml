@@ -1,0 +1,7 @@
+div[data-controller="carousel"] {
+  .carousel-item {
+    white-space: initial;
+    transition-property: margin-left;
+    transition-duration: 700ms;
+  }
+}

@@ -1,0 +1,7 @@
+<turbo-frame id="dashboard">
+  <% for tab in tabs.tabs.into_iter() { %>
+  <div>
+    <%- tab.content %>
+  </div>
+  <% } %>
+</turbo-frame>

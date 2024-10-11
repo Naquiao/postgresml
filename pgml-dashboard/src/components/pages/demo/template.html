@@ -1,0 +1,265 @@
+<% use crate::components::tables::{small as small_table, large as large_table}; %>
+<% use crate::components::headings::{Green, Blue, Gray}; %>
+<% use crate::components::inputs::text::EditableHeader; %>
+<% use crate::components::inputs::text::{Input, search::{Search, search::SearchOptions}}; %>
+<% use crate::components::badges::{small, large::{self, label::LabelCloseOptions}}; %>
+<% use crate::components::stimulus::StimulusAction; %>
+<% use crate::components::inputs::RangeGroupV2; %>
+<% use crate::components::inputs::select::{Select, Option}; %>
+<% use crate::components::inputs::{SwitchV2, Radio, Checkbox}; %>
+<% use crate::components::cards::{Rgb, Secondary, Primary}; %>
+<% use crate::components::inputs::labels::WithTooltip; %>
+
+<div class="container" data-controller="pages-demo">
+  <div class="py-5">
+    <%+ small_table::Table::new(&["Model", "Performance", "Cost"], &[
+      small_table::Row::new(&[
+        "intfloat/e5-small-v2".into(),
+        "5ms/embedding".into(),
+        "$0.0000000001/embedding".into(),
+      ]).into(),
+      small_table::Row::new(&[
+        "Alibaba-NLP/gte-base-en-v1.5".into(),
+        "5ms/embedding".into(),
+        "$0.0000000001/embedding".into(),
+      ]).into(),
+      small_table::Row::new(&[
+        "Alibaba-NLP/gte-large-en-v1.5".into(),
+        "10ms/embedding".into(),
+        "$0.0000000002/embedding".into(),
+      ]).into(),
+      small_table::Row::new(&[
+        "mixedbread-ai/mxbai-embed-large-v1".into(),
+        "10ms/embedding".into(),
+        "$0.0000000002/embedding".into(),
+      ]).into(),
+    ]) %>
+  </div>
+
+  <div class="py-5">
+    <%+ large_table::Table::new(&["Model", "Performance", "Cost"], &[
+      large_table::Row::new(&[
+        "intfloat/e5-small-v2".into(),
+        "5ms/embedding".into(),
+        "$0.0000000001/embedding".into(),
+      ]).into(),
+      large_table::Row::new(&[
+        "Alibaba-NLP/gte-base-en-v1.5".into(),
+        "5ms/embedding".into(),
+        "$0.0000000001/embedding".into(),
+      ]).into(),
+      large_table::Row::new(&[
+        "Alibaba-NLP/gte-large-en-v1.5".into(),
+        "10ms/embedding".into(),
+        "$0.0000000002/embedding".into(),
+      ]).into(),
+      large_table::Row::new(&[
+        "mixedbread-ai/mxbai-embed-large-v1".into(),
+        "10ms/embedding".into(),
+        "$0.0000000002/embedding".into(),
+      ]).into(),
+    ]) %>
+  </div>
+
+  <div class="py-5">
+    <%+ Green::new("Unify RAG") %>
+    <p>Vector & Relational Database + Embedding generation</p>
+  </div>
+
+  <div class="py-5">
+    <%+ Blue::new("Dedicated database") %>
+    <p>LLMs for life/p>
+  </div>
+
+  <div class="py-5">
+    <span class="text-uppercase fw-semibold">
+      <%+ Gray::new("Database type") %>    
+    </span>
+  </div>
+
+  <div class="py-5">
+    <%+ Secondary::default() %>
+  </div>
+
+  <div class="py-5">
+    <%+ EditableHeader::default() %>
+  </div>
+
+  <div class="py-5">
+    <%+ Input::new()
+      .label("What is your name?".into())
+      .icon("person")
+      .placeholder("Enter your name")
+      .name("name")
+      .type_("text") %>
+  </div>
+
+  <div class="py-5">
+    <% 
+      let label = WithTooltip::new("Name".into())
+        .tooltip("Your full name.")
+        .icon("info");
+    %>
+
+    <%+ Input::new()
+      .label(label.into())
+      .icon("person")
+      .placeholder("Enter your name")
+      .name("name")
+      .type_("text")
+      .error(Some("Your name is not valid.")) %>
+  </div>
+
+  <div class="py-5">
+    <%+ Search::new(SearchOptions {
+      name: "Model search".into(),
+      placeholder: "Search for a model".into(),
+      search_url: "/components-library-demo?search=".into(),
+      id: "model-search".into(),
+    }) %>
+  </div>
+
+  <div class="d-flex gap-2 py-5">
+    <div><%+ small::Label::check_circle("Supported") %></div>
+    <div><%+ small::Label::cancel("Not supported") %></div>
+    <div><%+ small::Label::outbound("Optimized") %></div>
+    <div><%+ small::Label::download_for_offline("Load model") %></div>
+    <div><%+ small::Label::forward_circle("Loading") %></div>
+  </div>
+
+  <div class="d-flex gap-2 py-5">
+    <div>
+      <%+ large::Label::new("Mixtral/7B") %>
+    </div>
+    <div>
+      <%+ large::Label::new("5ms/embedding").active().close_options(LabelCloseOptions {
+        action: StimulusAction::new(),
+        url: "#".into()
+      }) %>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <div class="card">
+      <div class="card-body">
+        <%+ RangeGroupV2::new()
+          .min("40")
+          .max("16000")
+          .value("40")
+          .cost_per_unit("0.20")
+          .unit("GB")
+          .input_unit("GB")
+        %>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <%+ Select::new()
+                .options_with_input_value(&[
+                  Option::with_input_value("Hello", "1"),
+                  Option::with_input_value("World", "2"),
+                ])
+            %> 
+          </div>
+          <div class="col-6">
+            <%+ Select::new()
+                .options(vec![
+                  "hello",
+                  "world",
+                ])
+            %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <div class="card">
+      <div class="card-body">
+        <%+ SwitchV2::default() %>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <div class="card">
+      <div class="card-body">
+        <%+ Radio::default() %>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <%+ Primary::new(Select::new()
+      .options_with_input_value(&[
+        Option::with_input_value("Hello", "1"),
+        Option::with_input_value("World", "2"),
+      ]).into()) %>
+  </div>
+
+  <div class="py-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div
+              data-action="click->pages-demo#selectRgb"
+              data-pages-demo-target="rgb"
+            >
+              <%+ Rgb::default().active() %>
+            </div>
+          </div>
+
+          <div class="col" id="rgb-link">
+            <div
+              data-action="click->pages-demo#selectRgb"
+              data-pages-demo-target="rgb"
+            >
+              <%+ Rgb::default() %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5 mb-5">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="d-flex">
+          <%+ Checkbox::new("Inline checkbox", "inline") %>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <%+ Checkbox::new("Take full width checkbox", "block") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <%+ WithTooltip::new("Model".into())
+        .tooltip("A model is great, but two is better.")
+        .icon("help_outline") %>
+  </div>
+
+  <div class="py-5">
+    <%+ WithTooltip::new("Model".into())
+        .tooltip_html("A model is great<br>, but<br> two<br> is better.")
+        .icon("help_outline") %>
+  </div>
+
+  <div class="py-5 d-flex gap-2">
+    <button class="btn btn-primary-web-app">Primary button</button>
+    <button class="btn btn-primary-web-app" disabled>Primary disabled</button>
+    <button class="btn btn-secondary-web-app">Secondary button</button>
+    <button class="btn btn-secondary-web-app" disabled>Secondary button</button>
+  </div>
+</div>

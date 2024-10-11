@@ -1,0 +1,302 @@
+//
+// Default SASS Variable Overrides and Custom Variables
+//
+
+// Neutral Scale
+$gray-100: #FFFFFF;
+$gray-200: #DEE0E7;
+$gray-300: #ABACB0;
+$gray-400: #777A81;
+$gray-500: #51545B;
+$gray-600: #2F3033;
+$gray-700: #212224;
+$gray-800: #17181A;
+$gray-900: #000000;
+
+// Violet Scale
+$violet-tint-100: #A105FF;
+$violet-tint-200: #Aa1dff;
+$violet-tint-300: #b336ff;
+$violet-tint-400: #bd50ff;
+$violet-tint-500: #c669ff;
+$violet-tint-600: #d082ff;
+$violet-tint-700: #d99bff;
+$violet-tint-800: #e2b4ff;
+$violet-tint-900: #eccdff;
+$violet-tint-1000: #f5e6ff;
+
+$violet-shade-100: #A105FF;
+$violet-shade-200: #9004e5;
+$violet-shade-300: #8004cc;
+$violet-shade-400: #7003b2;
+$violet-shade-500: #600399;
+$violet-shade-600: #50027f;
+$violet-shade-700: #400266;
+$violet-shade-800: #30014c;
+$violet-shade-900: #200133;
+$violet-shade-1000: #100019;
+
+// Neon Scale 
+$neon-tint-100: #5162FF;
+$neon-tint-200: #6271FF;
+$neon-tint-300: #7381FF;
+$neon-tint-400: #8591FF;
+$neon-tint-500: #96A0FF;
+$neon-tint-600: #A8B0FF;
+$neon-tint-700: #B9C0FF;
+$neon-tint-800: #CACFFF;
+$neon-tint-900: #DCDFFF;
+$neon-tint-1000: #EDEFFF;
+
+$neon-shade-100: #5162FF;
+$neon-shade-200: #4858E5;
+$neon-shade-300: #404ECC;
+$neon-shade-400: #3844B2;
+$neon-shade-500: #303A99;
+$neon-shade-600: #28317F;
+$neon-shade-700: #202766;
+$neon-shade-800: #181D4C;
+$neon-shade-900: #101333;
+$neon-shade-1000: #080919;
+
+// Teal Scale
+$teal-tint-100: #00E0FF;
+$teal-tint-200: #00c9e5;
+$teal-tint-300: #00b3cc;
+$teal-tint-400: #009cb2;
+$teal-tint-500: #008699;
+$teal-tint-600: #00707f;
+$teal-tint-700: #005966;
+$teal-tint-800: #00434c;
+$teal-tint-900: #002c33;
+$teal-tint-1000: #001619;
+
+// Peach Scale 
+$peach-shade-100: #E9467A;
+$peach-shade-200: #D13F6D;
+$peach-shade-300: #BA3861;
+$peach-shade-400: #A33155;
+$peach-shade-500: #882A49;
+$peach-shade-600: #74233D;
+$peach-shade-700: #5D1C30;
+$peach-shade-800: #451524;
+$peach-shade-900: #2E0E18;
+$peach-shade-1000: #17070C;
+
+$peach-tint-100: #E9467A;
+$peach-tint-200: #EB5887;
+$peach-tint-300: #ED6A94;
+$peach-tint-400: #EF7DA1;
+$peach-tint-500: #F190AF;
+$peach-tint-600: #F4A2BC;
+$peach-tint-700: #F6B5C9;
+$peach-tint-800: #F8C7D7;
+$peach-tint-900: #FADAE4;
+$peach-tint-1000: #FCECF1;
+
+// Slate Scale 
+$slate-tint-100: #9185FF;
+$slate-tint-200: #9C91FF;
+$slate-tint-300: #A79DFF;
+$slate-tint-400: #B2A9FF;
+$slate-tint-500: #BDB5FF;
+$slate-tint-600: #C8C2FF;
+$slate-tint-700: #D3CEFF;
+$slate-tint-800: #DEDAFF;
+$slate-tint-900: #E9E6FF;
+$slate-tint-1000: #F4F2FF;
+
+$slate-shade-100: #9185FF;
+$slate-shade-200: #8277E5;
+$slate-shade-300: #746ACC;
+$slate-shade-400: #655DB2;
+$slate-shade-500: #574F99;
+$slate-shade-600: #48427F;
+$slate-shade-700: #3A3566;
+$slate-shade-800: #2B274C;
+$slate-shade-900: #1D1A33;
+$slate-shade-1000: #0E0D19;
+
+// Magenta Scale 
+$magenta-shade-100: #E6008A;
+$magenta-shade-200: #cf007c;
+$magenta-shade-300: #b8006e;
+$magenta-shade-400: #a10060;
+$magenta-shade-500: #8a0052;
+$magenta-shade-600: #730045;
+$magenta-shade-700: #5c0037;
+$magenta-shade-800: #450029;
+$magenta-shade-900: #2e001b;
+$magenta-shade-1000: #17000d;
+
+// Orange Shade
+$orange-shade-100: #FF9145;
+
+// Colors
+$primary: #0D0D0E;
+$secondary: $gray-100;
+$danger: $peach-shade-100;
+$error: $peach-shade-100;
+$purple: $slate-tint-100;
+$pink: $magenta-shade-100;
+$hp-white: #{$gray-200};
+$alert-notification-medium: #FF9145;
+$alert-notification-notice: #8CC6FF;
+$alert-notification-marketing: #7FFFD4;
+$alert-notification-high: #{$peach-shade-100};
+$mostly-black: #0D0D0E;
+
+
+// Background Colors
+$bg-white: #F8FAFC;
+$bg-black: #0D0D0E;
+
+// Gradient
+$hp-gradient: linear-gradient(48.19deg, #D940FF 0%, #9E02FE 24.43%, #00D1FF 100%);
+$hp-gradient-active: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(48.19deg, #FB40FF 0%, #BB02FE 24.43%, #00D1FF 100%);
+
+$gradient-text: linear-gradient(270deg, #26CBFF 0%, #808CFF 50%, #C92FFF 100%);
+$primary-gradient-main: linear-gradient(45deg, #D940FF 0%, #8F02FE 24.43%, #5162FF 52.60%, #00D1FF 100%);
+$gradient-main: linear-gradient(45deg, #FB40FF 0%, #BB02FE 25%, #00D1FF 100%);
+$gradient-light: linear-gradient(260.55deg, rgba(255, 255, 255, 0.56) 15.62%, rgba(255, 255, 255, 0.28) 67.01%);
+$gradient-dark: linear-gradient(260.55deg, rgba(58, 58, 58, 0.245) 15.62%, rgba(53, 51, 56, 0.28) 67.01%);
+$gradient-darker: linear-gradient(260.55deg,rgba(58,58,58,0.54) 15.62%,rgba(53,51,56,0.72) 67.01%);
+
+$gradient-pink: linear-gradient(42.63deg, #C44899 3.81%, #FF4567 100%);
+$gradient-green: linear-gradient(225deg, #44FFDD 0%, #05C168 100%);
+$gradient-gray: linear-gradient(45deg, #A3A3B5 0%, #EEEEEE 100%);
+$gradient-purple: linear-gradient(45deg, #5337FF 0%, #A175FF 100%);
+$gradient-orange: linear-gradient(225deg, #FFB444 22.93%, #FF6644 100%);
+$gradient-blue: linear-gradient(225deg, #3EDCFF 0%, #3E9AFF 100%);
+$gradient-red: linear-gradient(43deg, #C34899 3.81%, #FF4567 100%);
+
+// Borders
+$border-radius: 8px;
+$border-radius-lg: 16px;
+
+// Buttons.
+$btn-border-width: 1px;
+$btn-transition: none;
+$btn-box-shadow: none;
+$btn-focus-box-shadow: none;
+$btn-close-width: 14px;
+$btn-close-height: 14px;
+$btn-close-padding-x: 0;
+$btn-close-color: #{$gray-100};
+$btn-close-opacity: 1.0;
+$btn-close-white-filter: none;
+
+// Forms
+$input-padding-y: 16px;
+$input-padding-x: 20px;
+$input-border-width: 2px;
+$input-focus-border-color: #{$neon-shade-100};
+$input-color: #{$gray-200};
+$input-focus-color: #{$gray-200};
+$input-placeholder-color: #{$gray-400};
+$input-disabled-bg: #{$gray-700};
+$input-disabled-color: #{$gray-400};
+$input-bg: #{$gray-700};
+
+$input-group-addon-color: #{$gray-300};
+$input-group-addon-bg: #{$gray-700};
+$input-group-addon-border-color: #{$gray-700};
+
+$input-btn-focus-box-shadow: none;
+$form-label-font-weight: 500;
+$form-check-input-width: 1.4em;
+$form-check-input-checked-color: #{$primary};
+$form-check-input-checked-bg-color: #{$hp-white};
+$form-check-input-checked-border-color: #{$hp-white};
+$form-check-input-border-radius: 4px;
+$form-check-input-border: 2px solid var(--bs-border-color);
+$form-check-input-active-filter: none;
+$form-check-label-cursor: pointer;
+$form-check-radio-checked-bg-image: none;
+
+$form-range-track-height: .4rem;
+$form-range-track-box-shadow: none;
+$form-range-track-color: #{$gray-600};
+$form-range-thumb-width: 1rem;
+$form-range-thumb-box-shadow: none;
+$form-range-thumb-transition: none;
+$form-range-thumb-active-bg: #{$primary};
+$form-range-thumb-bg: #{$primary};
+$form-range-thumb-border: 4px solid #{$neon-tint-100};
+$form-range-track-bg: #111213;
+$form-feedback-icon-invalid: none;
+$form-feedback-icon-valid: none;
+$form-feedback-invalid-color: #{$error};
+
+$input-box-shadow: none;
+$form-switch-checked-color: #{$gray-100};
+$form-switch-focus-color: #{$gray-100};
+
+$input-color: #{$gray-400};
+
+// Badge
+$badge-font-weight: normal;
+$badge-font-size: 0.65em;
+
+// Navbar
+$navbar-nav-link-padding-x: 1rem;
+$navbar-height: 88px;
+
+// Nav Tabs
+$nav-link-transition: none;
+$nav-tabs-border-width: 2px;
+$nav-tabs-border-radius: 0px;
+$nav-underline-border-width: 2px;
+$nav-tabs-link-active-color: #{$gray-100};
+$nav-tabs-link-active-bg: transparent;
+$nav-pills-border-radius: calc(#{$border-radius} / 2);
+
+// WebApp Left Nav
+$left-nav-w: 17rem;
+$left-nav-w-collapsed: 88px;
+
+// Docs Left Nav
+$docs-left-nav-w: 300px;
+
+// WebApp Content Container
+$webapp-content-max-width: 1224px;
+
+// Docs Content Container
+$docs-content-max-width: 1224px;
+
+//Grid
+$enable-cssgrid: true;
+$enable-shadows: true;
+
+// Spaces
+$card-box-shadow: 16px 20px 24px rgba(6, 20, 37, 0.04);
+$card-border-radius: 8px;
+$card-spacer-x: 20px;
+$card-spacer-y: 20px;
+$enable-negative-margins: true;
+
+// Dropdown
+$dropdown-border-radius: calc($border-radius / 2);
+$dropdown-spacer: 4px;
+$dropdown-menu-height: 20rem;
+
+// Modal
+$modal-backdrop-opacity: 0.70;
+
+// Toast
+$toast-border-width: 0;
+$toast-box-shadow: none;
+
+// Alert
+$alert-border-width: 2px;
+
+// breadcrumb
+$breadcrumb-padding-x:              4px;
+$breadcrumb-item-padding-x:         4px;
+$breadcrumb-margin-bottom:          0px;
+$breadcrumb-divider:                quote("");
+$breadcrumb-height:                 57px;
+
+// animations
+$animation-timer: 0.35s;
+$transition-collapse-width:   width .35s ease;

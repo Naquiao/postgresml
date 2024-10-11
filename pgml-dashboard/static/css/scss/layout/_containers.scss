@@ -1,0 +1,192 @@
+.x-scroll-container {
+    @extend .noselect;
+    
+    display: flex; 
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width: 100vw;
+    position: relative;
+
+    &::-webkit-scrollbar {
+        background: transparent; 
+
+        &-thumb {
+            background: transparent;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        &:hover {
+            cursor: grab;
+    
+            &::-webkit-scrollbar {
+                display: block; 
+                background: transparent;
+                &-track {
+                    background: #{$gray-800};
+                    margin: 40vw;
+                }
+                &-thumb {
+                    background: #{$purple};
+                }
+            }
+        }
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
+    &> * {
+        min-width: min(25rem, 75vw);
+    }
+
+    &> *:first-child {
+        margin-left: 3rem;
+    }
+
+    &> *:last-child {
+        margin-right: 3rem;
+    }
+
+    &.container-align {
+        @include media-breakpoint-up(lg) {
+            &> *:first-child {
+                margin-left: calc((100vw - 951px) / 2);
+            }
+
+            &> *:last-child {
+                margin-right: calc((100vw - 951px) / 2);
+            }
+        }
+
+        @include media-breakpoint-up(xl) {
+            &> *:first-child {
+                margin-left: calc((100vw - 1119px) / 2);
+            }
+
+            &> *:last-child {
+                margin-right: calc((100vw - 1119px) / 2);
+            }
+        }
+
+        @include media-breakpoint-up(xxl) {
+            &> *:first-child {
+                margin-left: calc((100vw - 1300px) / 2);
+            }
+
+            &> *:last-child {
+                margin-right: calc((100vw - 1300px) / 2);
+            }
+        }
+    }
+}
+
+.toc-container {
+    height: 2.5rem;
+    overflow: visible;
+
+    // hide scrollbar while expanding and collapsing
+    .collapsing {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        scrollbar-width: none; // firefox
+    }
+
+    .show {
+        height: 100%;
+        max-height: 80vh;
+    }
+    
+    .collapse {
+        overflow-y: auto;
+    }
+    
+    @include media-breakpoint-up(xxl) {
+        height: 100%;
+        max-height: 80vh;
+        top: calc($navbar-height + $spacer);
+
+        .collapse {
+            height: 100%;
+            max-height: calc(80vh - 7.5rem);
+        }
+    }
+}
+
+.container>.sticky-top-nav, .container-fluid>.sticky-top-nav {
+    margin-left: calc(var(--bs-gutter-x) * -0.5);
+    margin-right: calc(var(--bs-gutter-x) * -0.5);
+}
+
+// Moves item content out from under navbar but container stays under navbar to provide background. 
+// This is used for transparent sticky or fixed navbars.
+.tuck-under-navbar {
+    margin-top: -$navbar-height;
+    padding-top: $navbar-height;
+}
+
+// Prevents navbar from hidding under navbar. 
+// This is used for fully opaque sticky or fixed navbars.
+.clear-from-under-navbar {
+    margin-top: calc($navbar-height + 1px );
+}
+
+// Make position sticky items stick under the sticky top navbar.
+.stick-under-topnav {
+    top: $navbar-height;
+}
+
+.web-app-left-nav-sized-container {
+    padding: 0px;
+    margin: 0px;
+
+    @include media-breakpoint-up(lg) {
+        width: $left-nav-w;
+    }
+}
+
+.webapp-content-max-width-container {
+    max-width: $webapp-content-max-width;
+    margin: 0px 20px;
+    min-height: calc(100vh - $navbar-height - $breadcrumb-height - 1px);
+    
+    @include media-breakpoint-up(md) {
+        margin: 0px auto;
+    }
+  }
+
+.docs-content-max-width-container {
+    max-width: $docs-content-max-width;
+
+    margin: 0px auto;
+}
+
+.web-app-content-area {
+    @include media-breakpoint-up(lg) {
+        margin-left: $left-nav-w-collapsed
+    }
+}
+
+.psychedelic-pink-bg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(md) {
+        background-image: url("/dashboard/static/images/newsletter_subscribe_background_desktop.png");
+    }
+    background-image: url("/dashboard/static/images/newsletter_subscribe_background_mobile.png");
+    background-color: #{$pink};
+}
+
+.hide-admonition-title-container {
+    .admonition-title {
+        display: none !important;
+    }
+
+    .admonition-tip {
+        padding: 1.75rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,189 @@
+// TODO: Use header classes and slim down card-title class. 
+.card {
+    backdrop-filter: blur(8px);
+
+    &.select-hover {
+        &:focus, &.active {
+            --bs-card-border-color: #{$purple};
+            --bs-card-bg: #{$gray-600};
+        }
+
+        &:hover:not(.active) {
+            --bs-card-border-color: #{$gray-700};
+        }
+    }
+
+    &.card-lg {
+        --bs-card-spacer-y: 40px;
+        --bs-card-spacer-x: 40px;
+    }
+    
+    &.gradient-purple {
+        background: $hp-gradient !important;
+        border: 0; // This causes breakage.
+    }
+
+    &.card-dark {
+        background: $gradient-dark; 
+    }
+
+    &.card-light {
+        background: $gradient-light;
+    }
+
+    .list-group > .list-group-item {
+        padding-left: 0px;
+    }
+}
+
+.sortable-drag {
+    .card {
+        background: #{$gray-900};
+    }
+}
+
+.generic-card {
+    --bs-card-border-radius: 20px;
+    
+    &:hover {
+        box-shadow: 20px 20px 24px rgba(49, 67, 89, 0.13);
+    }
+
+    > .card-body {
+        > .card-img-top {
+            margin-bottom: 24px;
+        }
+
+        > .card-title {
+            font-size: 2rem;
+            line-height: $line-height-base;
+            font-weight: $font-weight-bold;
+        }
+    }
+
+}
+
+.feature-card {
+    @extend .card, .card-lg, .card-dark;
+
+    --bs-card-title-spacer-y: 1rem;
+    
+    &:hover {
+        background: $gradient-darker;
+    }
+
+    > .card-body {
+        display: flex; 
+        flex-direction: column;
+    
+        > .card-img-top {
+            margin-bottom: 2rem;
+        }
+
+        > .card-title {
+            font-size: 2rem;
+            line-height: $line-height-base;
+            font-weight: $font-weight-bold;
+        }
+
+        > .card-text {
+            margin-bottom: 2rem;
+        }
+
+        > .card-btn {
+            margin: auto auto 0px auto;
+        }
+    }
+}
+
+.form-card {
+    @extend .card, .card-lg;
+
+    min-width: 25vw;
+}
+
+@mixin gradient-border-card($primary-color, $gradient, $on_hover_only: false, $border: 2px) {
+    backdrop-filter: none;
+
+    background: $primary-color;
+    --bs-card-bg: $primary-color;
+    --bs-card-border-color: transparent;
+    --bs-card-color: #DEE0E7;
+    background-clip: padding-box; 
+    border: solid $border transparent;
+
+    position: relative;
+    box-sizing: border-box;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        margin: -$border; 
+        border-radius: inherit;
+
+        @if $on_hover_only {
+            background: transparent;
+        } @else {
+            background: $gradient;
+        }
+    }
+
+    @if $on_hover_only {
+        &:hover {
+            &:before {
+                background: $gradient;
+            }
+        }
+    }
+}
+
+.main-gradient-border-card {
+    @include gradient-border-card($gray-600, $gradient-main);
+}
+
+.main-gradient-border-card-1 {
+    @include gradient-border-card($gray-600, $gradient-main, false, 1px);
+}
+
+.red-gradient-border-card {
+    @include gradient-border-card($gray-600, $gradient-pink);
+}
+
+.orange-gradient-border-card {
+    @include gradient-border-card($gray-600, $gradient-orange);
+}
+
+.blue-gradient-border-card {
+    @include gradient-border-card($gray-600, $gradient-blue);
+}
+
+.green-gradient-border-card {
+    @include gradient-border-card($gray-600, $gradient-green);
+}
+
+.main-gradient-border-card-1-hover {
+    @include gradient-border-card($gray-600, $gradient-main, true, 1px);
+}
+
+.interactive-card {
+    border: 1px solid transparent;
+    background-color: #{$gray-700};
+
+    .edit-icon {
+        color: #{$purple};
+        border-bottom: 2px solid #{$purple};
+    }
+
+    &:hover, &:active, &:focus, &:focus-within, &:target {
+        border: 1px solid #{$neon-tint-100};
+        background-color: #{$gray-800};
+        cursor: pointer;
+        .edit-icon {
+            color: #{$slate-tint-400};
+            border-bottom: 2px solid #{$slate-tint-400};
+        }
+
+    }
+}

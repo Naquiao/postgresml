@@ -1,0 +1,14 @@
+div[data-controller="cards-newsletter-subscribe"] {
+    .message {
+        display: none;
+
+        &.success, &.error {
+            display: block;
+        }
+
+        bottom: -3rem;
+        @include media-breakpoint-up(xl) {
+            left: 0px;
+        }
+    }
+}

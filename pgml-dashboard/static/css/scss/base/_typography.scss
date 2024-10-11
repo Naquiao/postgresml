@@ -1,0 +1,164 @@
+// all other displays are default bootstrap styling
+.display-2 {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold;
+    font-size: 4rem;
+    line-height: 80px;
+}
+
+.h1-big {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--h1-big-font-size); line-height: var(--h1-big-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 48px; line-height: 52px;
+    } 
+}
+h1, .h1 { 
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--h1-font-size); line-height: var(--h1-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: $h1-font-size; line-height: 48px;
+    }
+}
+h2, .h2 {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--h2-font-size); line-height: var(--h2-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 40px; line-height: 44px;
+    }
+}
+h3, .h3 {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--h3-font-size); line-height: var(--h3-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 32px; line-height: 36px;
+    }
+}
+h4, .h4 {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--h4-font-size); line-height: var(--h4-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 28px; line-height: 32px;
+    }
+}
+h5, .h5 {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--h5-font-size); line-height: var(--h5-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 24px; line-height: 28px;
+    }
+}
+h6, .h6 {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--h6-font-size); line-height: var(--h6-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 20px; line-height: 26px;
+    }
+}
+
+.eyebrow-text {
+    font-family: var(--font-family-primary);
+    font-weight: $font-weight-bold; font-size: var(--eyebrow-font-size); line-height: var(--eyebrow-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 16px; line-height: 22px;
+    }
+}
+
+.subcopy-text {
+    font-family: var(--font-family-secondary);
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.body-large-text {
+    font-family: var(--font-family-secondary);
+    font-size: var(--body-large-font-size); line-height: var(--body-large-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 18px; line-height: 24px;
+    }
+}
+
+// default body text
+.body-regular-text, p, body {
+    font-family: var(--font-family-secondary);
+    font-size: var(--body-regular-font-size); line-height: var(--body-regular-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 16px; line-height: 20px;
+    }
+}
+
+.body-small-text {
+    font-family: var(--font-family-secondary);
+    font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 14px; line-height: 18px;
+    }
+}
+
+.legal-text {
+    font-family: var(--font-family-secondary);
+    font-size: var(--legal-font-size);
+    line-height: var(--legal-line-height);
+    @include media-breakpoint-down(md) {
+        font-size: 12px; line-height: 16px;
+    }
+}
+
+.text-error {
+    color: #{$error} !important;
+}
+.text-black {
+    color: #{$gray-900} !important;
+}
+.text-white-600 {
+    color: #{$gray-600} !important;
+}
+.text-white-300 {
+    color: #{$gray-300} !important;
+}
+.text-white-400 {
+    color: #{$gray-400} !important;
+}
+.text-soft-white, .text-white-200 {
+    color: #{$gray-200} !important;
+}
+.text-white, .text-white-100 {
+    color: #{$gray-100} !important;
+}
+.text-purple {
+    color: #{$purple} !important;
+}
+
+@mixin text-gradient($gradient) {
+    background: #{$gradient};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.text-gradient-blue, .syntax-highlight {
+    @include text-gradient($gradient-blue);
+}
+.text-gradient-green {
+    @include text-gradient($gradient-green);
+}
+.text-gradient-orange {
+    @include text-gradient($gradient-orange);
+}
+.text-gradient-pink {
+    @include text-gradient($gradient-pink);
+}
+.text-gradient-purple {
+    @include text-gradient($gradient-purple);
+}
+.text-gradient-party, .party-time {
+    @include text-gradient($gradient-text);
+}
+
+.font-family-primary {
+    font-family: var(--font-family-primary) !important;
+}
+
+.font-family-secondary {
+    font-family: var(--font-family-secondary) !important;
+}

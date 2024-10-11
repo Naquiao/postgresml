@@ -1,0 +1,230 @@
+.sticky-top-nav {
+    height: $navbar-height;
+    position: sticky; 
+    top: 0px; 
+    z-index: $zindex-sticky;
+}
+
+.fixed-top-nav {
+    height: $navbar-height;
+    position: fixed; 
+    top: 0px;
+    z-index: calc($zindex-fixed + 1);
+}
+
+.navbar {
+    --bs-navbar-padding-y: 24px;
+    --bs-navbar-padding-x: 24px;
+    --bs-nav-link-font-weight: 500;
+
+    padding: 0px 20px;
+
+    &.horizontal {
+        --bs-navbar-padding-y: 16px;
+        --bs-navbar-padding-x: 20px;
+        min-height: $navbar-height;
+
+        &.pinned, &.no-transparent {
+            background: #{$gray-900};
+        }
+
+        .nav-link {
+            --bs-nav-link-padding-y: 0px;
+            --bs-nav-link-padding-x: 0px;
+            
+            border-bottom: 1px solid transparent;
+    
+            &:active {
+                border-bottom: 1px solid #{$slate-tint-500};
+            }
+        }
+    }
+
+    .nav-link {
+        --bs-nav-link-padding-y: 16px;
+        --bs-nav-link-padding-x: 24px;
+
+        &:hover {
+            @include bold_by_shadow($purple);
+
+            path {
+                fill: var(--bs-nav-link-hover-color);
+            }
+        }
+
+        &:active {
+            color: #{$slate-tint-500};
+            path {
+                fill: #{$slate-tint-500};
+            }
+        }
+    }
+
+    .nav {
+        max-width: 100%;
+    }
+
+    .nav-item {
+        max-width: 100%;
+
+        a {
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        &.active {
+
+            > a {
+                color: #{$gray-100};
+                background: #{$purple};
+            }
+
+            .nav-marker {
+                background: #{$purple};
+            }
+
+            >.nav-link {
+                --bs-nav-link-color: #{$purple};
+            }
+        }
+    }
+
+    .navbar-toggler {
+        border: 0px;
+
+        &:focus {
+            text-decoration: none;
+            outline: 0;
+            box-shadow: 0 0 0;
+        }
+    }
+}
+
+.navbar-expanded {
+    background-color: #{$gray-900} !important;
+}
+
+.offcanvas-body {
+    --bs-offcanvas-padding-x: 0;
+}
+
+// If the icon is the controller 
+.rotate-on-aria-expanded {
+    transition: transform .1s;
+
+    &[aria-expanded=false] {
+        transform: rotate(-90deg);
+    }
+}
+
+// If the icon is a child of the controller
+[data-bs-toggle="collapse"] {
+    span.rotate-on-aria-expanded {
+        transition: transform .1s;
+    }
+
+    &[aria-expanded=false] {
+        span.rotate-on-aria-expanded {
+            transform: rotate(-90deg);
+        }
+    }
+}
+
+.drawer-submenu-container {
+    display: grid;
+
+    & > * {
+        grid-area: 1/1;
+    }
+}
+
+.drawer-submenu {
+    white-space: nowrap;
+    @include media-breakpoint-down(lg) {
+        background-color: #{$gray-900};
+    }
+
+    &.collapsing.collapse-horizontal {
+        width: 0;
+        height: auto;
+        transition: none;
+      }
+}
+
+.menu-item {
+    padding: 0px;
+    text-decoration: none;
+    border-radius: calc($border-radius / 2);
+    white-space: nowrap;
+    font-weight: 400;
+
+    .material-symbols-outlined {
+        color: #{$slate-shade-300};
+    }
+
+    button, a {
+        padding: 8px 24px 8px 24px;
+        color: #{$gray-100};
+        width: 100%;
+        transition: padding $animation-timer;
+    }
+
+    &:hover {
+        background-color: #{$gray-700};
+        color: #{$gray-100};
+        
+        span:not(.material-symbols-outlined) {
+            @include semibold_by_shadow($gray-100)
+        }
+        span.material-symbols-outlined {
+            @include bold_by_shadow($slate-shade-300)
+        }
+    }
+    
+    &:active:not(.disabled), &:focus:not(.disabled), &:target:not(.disabled), .active:not(.disabled) {
+        background-color: #{$neon-tint-100};
+        color: #{$gray-100};
+        border-radius: calc($border-radius / 2);
+
+        span {
+            color: #{$gray-100};
+        }
+    }
+
+    &:hover a.active {
+        span.material-symbols-outlined {
+            @include bold_by_shadow($gray-100)
+        }
+    }
+
+    & a.disabled, .disabled>span, &.disabled {
+        color: #{$gray-500};
+        pointer-events: none;
+    }
+
+    &.collapsed {
+        & button, & a {
+            padding: 8px 12px;
+        }
+    }
+
+    &.collapsing {
+        height: auto;
+        & button, & a {
+            padding: 8px 12px;
+        }
+    }
+}
+
+.docs-link-section {
+    color: #{$gray-300};
+    text-transform: capitalize;
+
+    .material-symbols-outlined {
+        color: #{$slate-shade-100};
+        font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        font-size: 18px;
+    }
+}

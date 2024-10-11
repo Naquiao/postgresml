@@ -1,0 +1,20 @@
+<div 
+  class="modal <%- size_class %>" 
+  id="<%= id %>"
+  data-controller="modal" tabindex="-1" aria-modal="true" role="dialog" data-modal-target="modal" 
+  data-action="show->modal#show hide->modal#hide"
+  <%- static_backdrop %>
+  >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <% if let Some(header) = header { %>
+        <div class="modal-header">
+          <%+ header %>
+        </div>
+      <% } %>
+      <div <% if default_style { %>class="modal-body" <% } %>>
+          <%+ body %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<table class="<%= classes %>" data-controller="tables-large-table">
+  <thead>
+    <tr>
+      <% for header in headers { %>
+        <th><%= header %></th>
+      <% } %>
+    </tr>
+  </thead>
+  <tbody>
+    <% for row in rows { %>
+    <%+ row %>
+    <% } %>
+  </tbody>
+  <% if !footers.is_empty() {%>
+    <tfoot>
+      <tr>
+        <% for footer in footers { %>
+          <td><%+ footer %></td>
+        <% } %>
+      </tr>
+    </tfoot>
+  <% } %>
+</table>

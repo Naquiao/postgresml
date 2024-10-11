@@ -1,0 +1,35 @@
+<div 
+  id="<%= id %>"
+  data-controller="inputs-text-editable-header"
+  data-action="error->inputs-text-editable-header#error clear->inputs-text-editable-header#clear">
+  <div class="editable-header-container" style="display: block"
+    data-action="click->inputs-text-editable-header#toggleEditor">
+    <<%= header_type.to_string() %> class="align-items-center <%= header_type.to_string() %> d-flex gap-3">
+      <span  data-inputs-text-editable-header-target="header" id="title">
+        <%= value %>
+      </span>
+
+      <input
+        type="text"
+        class="form-control"
+        value="<%= value %>"
+        style="display: none" 
+        maxlength="50"
+        autocomplete="off"
+        name="<%= input_name.unwrap_or_default() %>"
+        data-inputs-text-editable-header-target="input"
+        data-action="<%- input_actions %>"
+        <%- input_target %>
+      >
+      
+      <div>
+        <span class="material-symbols-outlined">
+          border_color
+        </span>
+      </div>
+    </<%= header_type.to_string() %>>
+    <div class="text-legal text-error" style="margin-top: -0.5rem; display: none" data-inputs-text-editable-header-target="error">error message</div>
+  </div>
+
+
+</div>
